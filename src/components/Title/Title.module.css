@@ -1,0 +1,14 @@
+.title {
+    color: #1a202c;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    line-height: 30px;
+} 
+
+.title--large {
+    font-size: 20px;
+}
+
+.title--small {
+    font-size: 30px;
+}

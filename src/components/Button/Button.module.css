@@ -1,0 +1,22 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-color);
+  border-radius: 8px;
+  border-style: none;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #fff;
+  font-size: 18px;
+  margin: 0;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.button:active {
+  background-color: #006ae8;
+}
+
+.button:hover {
+  background-color: #1c84ff;
+}

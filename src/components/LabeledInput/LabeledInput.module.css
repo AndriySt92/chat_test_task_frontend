@@ -1,0 +1,33 @@
+.wrapper {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+.input {
+  padding: 0px 20px;
+  background-color: #eee;
+  border: 0;
+  outline: 0;
+  outline: none;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 5px;
+  min-width: 280px;
+}
+
+.input.error {
+  border: 1px solid red;
+}
+
+.input::placeholder {
+  color: var(--dark-color);
+  opacity: 60%;
+  font-size: 14px;
+}
