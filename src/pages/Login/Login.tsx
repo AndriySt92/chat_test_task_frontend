@@ -9,10 +9,8 @@ import {
   Button,
   Error,
 } from "../../components"
-import { useAppDispatch } from "../../hooks/reduxHooks"
 import { Link } from "react-router-dom"
 import { useLoginMutation } from "../../redux/authApi"
-import { setUser } from "../../redux/authSlice"
 
 const Login = () => {
   const {
@@ -27,14 +25,12 @@ const Login = () => {
     },
   })
   const [login, { isLoading, error }] = useLoginMutation()
-  const dispatch = useAppDispatch()
 
   const onSubmit = handleSubmit(async data => {
     try {
-      const { lastName, firstName, email } = await login(data).unwrap()
-      dispatch(setUser({ lastName, firstName, email }))
+      await login(data).unwrap()
     } catch (error) {
-      console.log("Something went wrong")
+      console.log(error)
     }
   })
 
@@ -66,6 +62,7 @@ const Login = () => {
           error={errors?.password?.message as string}
           register={register}
           validation={{
+            required: "Password is required",
             minLength: {
               value: 6,
               message: "Password must be at least 6 symbols",

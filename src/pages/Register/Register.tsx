@@ -9,12 +9,10 @@ import {
   Button,
   Error,
 } from "../../components"
-import { useAppDispatch } from "../../hooks/reduxHooks"
 import { Link } from "react-router-dom"
 import { useRegisterMutation } from "../../redux/authApi"
-import { setUser } from "../../redux/authSlice"
 
-const Login = () => {
+const Register = () => {
   const {
     register,
     watch,
@@ -23,20 +21,20 @@ const Login = () => {
   } = useForm<IRegisterData>({
     mode: "onChange",
     defaultValues: {
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
+      confirmPassword: "",
     },
   })
   const [registerMutation, { isLoading, error }] = useRegisterMutation()
-  const dispatch = useAppDispatch()
 
   const onSubmit = handleSubmit(async data => {
     try {
-      const { lastName, firstName, email } =
-        await registerMutation(data).unwrap()
-      dispatch(setUser({ lastName, firstName, email }))
+      await registerMutation(data).unwrap()
     } catch (error) {
-      console.log("Something went wrong")
+      console.log(error)
     }
   })
 
@@ -52,6 +50,7 @@ const Login = () => {
           error={errors?.firstName?.message as string}
           register={register}
           validation={{
+            required: "First Name is required",
             minLength: {
               value: 2,
               message: "First Name must be at least 2 characters",
@@ -71,6 +70,7 @@ const Login = () => {
           error={errors?.lastName?.message as string}
           register={register}
           validation={{
+            required: "Last Name is required",
             minLength: {
               value: 2,
               message: "Last Name must be at least 2 characters",
@@ -106,6 +106,7 @@ const Login = () => {
           error={errors?.password?.message as string}
           register={register}
           validation={{
+            required: "Password is required",
             minLength: {
               value: 6,
               message: "Password must be at least 6 symbols",
@@ -121,10 +122,10 @@ const Login = () => {
           error={errors?.confirmPassword?.message as string}
           register={register}
           validation={{
-            required: true,
+            required: "Confirm password is required",
             validate: (val: string) => {
-              if (watch('password') != val) {
-                return "Your passwords do no match";
+              if (watch("password") != val) {
+                return "Your passwords do no match"
               }
             },
           }}
@@ -153,4 +154,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register

@@ -1,8 +1,9 @@
 .register {
     height: auto;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 30px 50px;
-    border-radius: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 400;
   }
