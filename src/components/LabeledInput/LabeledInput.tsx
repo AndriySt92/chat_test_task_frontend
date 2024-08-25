@@ -13,6 +13,7 @@ interface Props {
   validation?: RegisterOptions
   inputStyle?: React.CSSProperties,
   labelStyle?: React.CSSProperties
+  wrapperStyle?: React.CSSProperties
 }
 
 const LabeledInput = ({
@@ -25,11 +26,12 @@ const LabeledInput = ({
   validation,
   inputStyle,
   labelStyle,
+  wrapperStyle,
 }: Props) => {
   const inputAllClasses = classNames(styles.input, error && styles.error)
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} style={wrapperStyle}>
       <label htmlFor={name} className={styles.label} style={labelStyle}>
         {label}
       </label>

@@ -1,5 +1,6 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { IUser } from "../interfaces/userInterfaces"
+import type { PayloadAction} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"
+import type { IUser } from "../interfaces/userInterfaces"
 import { authApi } from "./authApi"
 
 interface InitialState {

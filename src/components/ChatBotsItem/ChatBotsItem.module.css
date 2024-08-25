@@ -1,0 +1,33 @@
+.chatItem {
+  padding: 0px 20px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.chatItem.active {
+  background-color: var(--main-color);
+}
+
+.chatItem.active .chatItemInner {
+  border-bottom: 1px solid transparent;
+}
+
+.chatItem:hover {
+  background-color: var(--main-color);
+}
+
+.chatItem:hover .chatItemInner {
+  border-bottom: 1px solid transparent;
+}
+
+.chatItemInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
+  border-bottom: 1px solid var(--light);
+}
+
+.chatButtons svg + svg {
+  margin-left: 10px;
+}

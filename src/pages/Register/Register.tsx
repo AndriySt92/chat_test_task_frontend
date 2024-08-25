@@ -124,7 +124,7 @@ const Register = () => {
           validation={{
             required: "Confirm password is required",
             validate: (val: string) => {
-              if (watch("password") != val) {
+              if (watch("password") !== val) {
                 return "Your passwords do no match"
               }
             },

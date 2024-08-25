@@ -1,6 +1,14 @@
 :root {
-  --main-color: rgb(2, 118, 255);
+  --main-color: #00b0ff;
   --dark--color: rgb(23, 34, 52);
+  --white: #fff;
+  --black: #000;
+  --bg: #f8f8f8;
+  --grey: #999;
+  --dark: #1a1a1a;
+  --light: #e6e6e6;
+  --wrapper: 1000px;
+  --blue: #00b0ff;
 }
 
 *,
@@ -13,6 +21,12 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+body{
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/image.jpg');
+  background-size: cover;
+  background-repeat: none;
 }
  
 a {

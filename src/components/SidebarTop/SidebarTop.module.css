@@ -1,0 +1,10 @@
+.sidebarTop {
+    border-bottom: 1px solid var(--light) ;
+    padding: 10px 20px; 
+}
+
+.profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

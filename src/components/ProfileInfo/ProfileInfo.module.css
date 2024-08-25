@@ -1,0 +1,25 @@
+.profileInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profileInfo div {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    font-family: "Source Sans Pro", sans-serif;
+    max-width: 250px;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.message {
+    opacity: 70%;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

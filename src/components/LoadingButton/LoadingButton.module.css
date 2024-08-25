@@ -3,7 +3,7 @@
   width: 16px;
   height: 16px;
   color: #fff;
- animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 @keyframes spin {

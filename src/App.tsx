@@ -1,7 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import { Layout } from "./components"
-import { Home, Login, Register } from "./pages"
+import { Chat, Login, Register } from "./pages"
 import { PrivateRoutes, PublicRoutes } from "./routes"
+import { ToastContainer } from "react-toastify"
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
             path="/"
             element={
               <PrivateRoutes>
-                <Home />
+                <Chat />
               </PrivateRoutes>
             }
           />
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
+      <ToastContainer autoClose={5000} position={"top-right"} theme="light" />
     </div>
   )
 }
