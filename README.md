@@ -1,15 +1,15 @@
 # Reenbit test task
 
+## Screenshots
+
+![Main page](./src/assets/1.jpg)
+![Login page](./src/assets/4.jpg)
+![Create chat](./src/assets/2.jpg)
+![Update message](./src/assets/3.jpg)
+
 ## Backend Link
 
 https://github.com/AndriySt92/chat_test_task_backend
-
-##Screenshots
-
-![Main page](.src/assets/1.png)
-![Login Page](.src/assets/4.png)
-![Update message](.src/assets/3.png)
-![Create bot](.src/assets/2.png)
 
 ## Frontend
 
