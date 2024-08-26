@@ -2,7 +2,7 @@ import { useState } from "react"
 import styles from "./Sidebar.module.css"
 import { ChatBots, Error, Loader, SidebarTop } from "../../components"
 import { useGetChatsQuery } from "../../redux/chatApi"
-import { IChat } from "../../interfaces/chatInterfaces"
+import type { IChat } from "../../interfaces/chatInterfaces"
 
 interface Props {
   selectedChat: IChat

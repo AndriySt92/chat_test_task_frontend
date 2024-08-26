@@ -3,7 +3,7 @@ import { ProfileInfo } from "../../components"
 import styles from "./ChatBotsItem.module.css"
 import { MdSystemUpdateAlt } from "react-icons/md"
 import { RiDeleteBin6Line } from "react-icons/ri"
-import { IChat } from "../../interfaces/chatInterfaces"
+import type { IChat } from "../../interfaces/chatInterfaces"
 interface Props {
   chatId: string
   firstName: string

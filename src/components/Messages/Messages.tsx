@@ -1,5 +1,4 @@
-import { IChat, IMessage } from "../../interfaces/chatInterfaces"
-import { useGetChatMessagesQuery } from "../../redux/chatApi"
+import type { IChat, IMessage } from "../../interfaces/chatInterfaces"
 import {
   ProfileInfo,
   Title,
@@ -8,28 +7,19 @@ import {
   MessageForm,
 } from "../../components"
 import styles from "./Messages.module.css"
-import { useAppSelector } from "../../hooks/reduxHooks"
+import { useAppSelector } from "../../hooks/hooks"
 import { useState, useEffect, useRef } from "react"
 
 interface Props {
   selectedChat: IChat
+  messages: IMessage[]
 }
 
-const Messages = ({ selectedChat }: Props) => {
-  const [updatingMessage, setUpdatingMessage] = useState<IMessage | {}>({});
-  const [messages, setMessages] = useState<IMessage[]>([]);
+const Messages = ({ selectedChat, messages }: Props) => {
+  const [updatingMessage, setUpdatingMessage] = useState({})
   const [isUpdateMessageModalOpen, setUpdateMessageModalOpen] = useState(false)
   const user = useAppSelector(state => state.user.user)
   const messagesEndRef = useRef<HTMLDivElement | null>(null)
-
-  const { data } = useGetChatMessagesQuery(selectedChat._id)
-
-  useEffect(() => {
-    if(data) {
-      setMessages(data)
-    }
-  }, [data])
-  
 
   const openUpdateMessageModal = (message: IMessage) => {
     setUpdatingMessage(message)
@@ -46,9 +36,7 @@ const Messages = ({ selectedChat }: Props) => {
   }
 
   useEffect(() => {
-    if (messages && messages.length > 0) {
-      scrollToBottom()
-    }
+    scrollToBottom()
   }, [messages])
 
   return (
@@ -90,20 +78,22 @@ const Messages = ({ selectedChat }: Props) => {
       <div className={styles.messagesForm}>
         <MessageForm chatId={selectedChat._id} mode="create" />
       </div>
-      {isUpdateMessageModalOpen && <div className={styles.messagesForm}>
-        <Modal
-          isOpen={isUpdateMessageModalOpen}
-          onClose={closeUpdateMessageModal}
-        >
-          <Title>Update message</Title>
-          <MessageForm
-            chatId={selectedChat._id}
-            message={updatingMessage as IMessage}
-            mode="update"
-            handleUpdate={closeUpdateMessageModal}
-          />
-        </Modal>
-      </div>}
+      {isUpdateMessageModalOpen && (
+        <div className={styles.messagesForm}>
+          <Modal
+            isOpen={isUpdateMessageModalOpen}
+            onClose={closeUpdateMessageModal}
+          >
+            <Title>Update message</Title>
+            <MessageForm
+              chatId={selectedChat._id}
+              message={updatingMessage as IMessage}
+              mode="update"
+              handleUpdate={closeUpdateMessageModal}
+            />
+          </Modal>
+        </div>
+      )}
     </div>
   )
 }

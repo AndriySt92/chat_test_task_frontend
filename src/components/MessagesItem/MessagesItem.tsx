@@ -1,7 +1,7 @@
 import styles from "./MessagesItem.module.css"
 import classNames from "classnames"
 import { formatDate } from "../../utils/formatDate"
-import { IMessage } from "../../interfaces/chatInterfaces"
+import type { IMessage } from "../../interfaces/chatInterfaces"
 
 interface Props {
   messageId: string
@@ -35,7 +35,7 @@ const MessagesItem = ({
 
   return (
     <div className={`${styles.messagesItem} ${alignmentClass}`} onClick={handleClickMessage}>
-      <p className={`${styles.text}`}>{message}</p>
+      <p className={`${styles.text} ${alignmentClass}`}>{message}</p>
       <p className={`${styles.date}`}>{formatDate(updatedAt)}</p>
     </div>
   )

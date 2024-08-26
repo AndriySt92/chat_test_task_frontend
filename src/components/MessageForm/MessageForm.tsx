@@ -3,10 +3,10 @@ import Button from "../Button/Button"
 import LabeledInput from "../LabeledInput/LabeledInput"
 import { useForm } from "react-hook-form"
 import { useAddMessageMutation, useUpdateMessageMutation } from "../../redux/chatApi"
-import { IApiError } from "../../interfaces/errorIntreface"
+import type { IApiError } from "../../interfaces/errorIntreface"
 import { toast } from "react-toastify"
 import { IoSend } from "react-icons/io5"
-import { IMessage } from "../../interfaces/chatInterfaces"
+import type { IMessage } from "../../interfaces/chatInterfaces"
 
 interface Props {
   message?: IMessage
