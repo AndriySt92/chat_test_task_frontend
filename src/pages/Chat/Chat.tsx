@@ -23,7 +23,7 @@ const Chat = () => {
   useEffect(() => {
     let socket: Socket | undefined
     if (user?._id) {
-      socket = io("http://localhost:5000")
+      socket = io("https://chat-test-task-backend-1.onrender.com")
 
       socket.on("newMessage", (newMessage: IMessage) => {
         setMessages(prevMessages => [...prevMessages, newMessage])
