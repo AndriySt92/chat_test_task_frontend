@@ -1,3 +1,52 @@
 .messages {
-    flex: 2;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+}
+
+.messagesListWrapper {
+  flex: 1;
+  padding: 10px 10px;
+  overflow-y: auto;
+}
+
+.messagesListWrapper::-webkit-scrollbar {
+  width: 5px;
+}
+
+.messagesListWrapper::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 20px;
+  border: 3px solid var(--main-color);
+}
+
+.messagesList {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding-left: 0px;
+}
+
+.messagesList::-webkit-scrollbar {
+  width: 0.2rem;
+}
+
+.messagesTop {
+  border-bottom: 1px solid var(--secondary-color);
+  padding: 10px 10px 0px 10px;
+}
+
+.messagesForm {
+  display: flex;
+  width: 100%;
+  padding: 10px 10px;
+}
+
+.messagesForm form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }

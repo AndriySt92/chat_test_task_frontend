@@ -9,12 +9,12 @@ import ChatBotForm from "../ChatBotForm/ChatBotForm"
 import type { IChat } from "../../interfaces/chatInterfaces"
 
 interface Props {
-  handleClick: (chatId: string) => void
-  selectedChatId: string
-  data: IChat[]
+  handleClick: (chat: IChat) => void
+  selectedChat: IChat
+  chats: IChat[]
 }
 
-const ChatBots = ({ data, handleClick, selectedChatId }: Props) => {
+const ChatBots = ({ chats, handleClick, selectedChat }: Props) => {
   const [updatingChatId, setUpdatingChatId] = useState("")
   const [isUpdateChatModalOpen, setUpdateChatModalOpen] = useState(false)
 
@@ -30,9 +30,6 @@ const ChatBots = ({ data, handleClick, selectedChatId }: Props) => {
 
         try {
           await removeChat(deletingChatId).unwrap()
-          setDeletingChatId("")
-          setDeleteChatModalOpen(false)
-          setIsDeleteChat(false)
           toast("Deleted successfully")
         } catch (error: unknown) {
           if (error instanceof Error) {
@@ -42,6 +39,7 @@ const ChatBots = ({ data, handleClick, selectedChatId }: Props) => {
           } else {
             toast.error("An unexpected error occurred")
           }
+        } finally {
           setDeletingChatId("")
           setDeleteChatModalOpen(false)
           setIsDeleteChat(false)
@@ -82,32 +80,41 @@ const ChatBots = ({ data, handleClick, selectedChatId }: Props) => {
   return (
     <div className={styles.chatBots}>
       <ul className={styles.chatBotsList}>
-        {data && data.length !== 0 ? (
-          data.map(bot => (
-            <ChatBotsItem
-              key={bot._id}
-              chatId={bot._id}
-              avatar={bot.avatar || ""}
-              lastMessage={bot.lastMessage || "There are no messages"}
-              lastName={bot.bot_lastName}
-              firstName={bot.bot_firstName}
-              userId={bot.user_creator}
-              selectedChatId={selectedChatId}
-              handleUpdate={openUpdateChatModal}
-              handleDelete={openDeleteChatModal}
-              handleClick={handleClick}
-            />
-          ))
-        ) : (
-          <Title
-            size="small"
-            style={{ padding: "10px 20px", textAlign: "center" }}
-          >
-            You haven't created any chat bots!
-          </Title>
-        )}
+        {chats &&
+          chats.length !== 0 &&
+          chats.map(
+            ({
+              _id,
+              avatar,
+              lastMessage,
+              bot_firstName,
+              bot_lastName,
+              user_creator,
+            }) => (
+              <ChatBotsItem
+                key={_id}
+                chatId={_id}
+                avatar={avatar || ""}
+                lastMessage={lastMessage?.message || "There are no messages"}
+                lastName={bot_lastName}
+                firstName={bot_firstName}
+                userId={user_creator}
+                selectedChat={selectedChat}
+                handleUpdate={openUpdateChatModal}
+                handleDelete={openDeleteChatModal}
+                handleClick={handleClick}
+              />
+            ),
+          )}
       </ul>
-
+      {chats && chats.length === 0 && (
+        <Title
+          size="small"
+          style={{ padding: "10px 20px", textAlign: "center" }}
+        >
+          You haven't created any chat bots!
+        </Title>
+      )}
       <Modal isOpen={isUpdateChatModalOpen} onClose={closeUpdateChatModal}>
         <Title>Update chat bot</Title>
         <ChatBotForm
@@ -119,7 +126,7 @@ const ChatBots = ({ data, handleClick, selectedChatId }: Props) => {
 
       <Modal isOpen={isDeleteChatModalOpen} onClose={closeDeleteChatModal}>
         <Title>Delete chat bot?</Title>
-        <div style={{display: "flex", gap: "10px"}}>
+        <div style={{ display: "flex", gap: "10px" }}>
           <Button onClick={closeDeleteChatModal}>Cancel</Button>
           <Button onClick={() => setIsDeleteChat(true)}>Delete</Button>
         </div>

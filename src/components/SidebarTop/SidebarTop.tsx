@@ -29,8 +29,9 @@ const SidebarTop = ({handleSearch}: Props) => {
           firstName={user?.firstName || ""}
           lastName={user?.lastName || ''}
           avatar={user?.avatar || ""}
+          style={{marginBottom: '0px'}}
         />
-        <BiLogOut style={{ fontSize: "20px" }} onClick={handleLogout} />
+        <BiLogOut style={{ fontSize: "25px", cursor: 'pointer' }}  onClick={handleLogout} />
       </div>
       <Search handleSearch={handleSearch} />
       <Button onClick={openCreateChatModal}>Create bot</Button>

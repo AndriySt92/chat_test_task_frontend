@@ -1,5 +1,5 @@
 .sidebar {
     flex: 1;
-    border-right: 1px solid var(--light);
+    border-right: 1px solid var(--secondary-color);
     height: 100%;
 }

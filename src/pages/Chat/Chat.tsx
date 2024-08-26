@@ -1,22 +1,31 @@
 import { useState } from "react"
 import styles from "./Chat.module.css"
-import { Messages, Sidebar } from "../../components"
+import { Messages, Sidebar, Title } from "../../components"
+import { IChat } from "../../interfaces/chatInterfaces"
 
 const Chat = () => {
-  const [selectedChatId, setSelectedChatId] = useState<string>("")
+  const [selectedChat, setSelectedChat] = useState<IChat>({} as IChat)
 
-  const handleClickChat = (chatId: string) => {
-    setSelectedChatId(chatId)
+  const handleClickChat = (chat: IChat) => {
+    setSelectedChat(chat)
   }
 
   return (
     <div className={styles.chat}>
       <div className={styles.chatContainer}>
         <Sidebar
-          selectedChatId={selectedChatId}
+          selectedChat={selectedChat as IChat}
           handleClickChat={handleClickChat}
         />
-        <Messages selectedChatId={selectedChatId} />
+        {selectedChat._id ? (
+          <Messages selectedChat={selectedChat} />
+        ) : (
+          <div style={{ flex: "2" }}>
+            <Title style={{ textAlign: "center", paddingTop: "10px" }}>
+              Select a chatbot
+            </Title>
+          </div>
+        )}
       </div>
     </div>
   )

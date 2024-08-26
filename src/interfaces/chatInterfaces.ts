@@ -4,17 +4,16 @@ export interface IChat {
     bot_lastName: string
     user_creator: string
     messages?: IMessage[]
-    lastMessage: string | null
+    lastMessage: IMessage
     avatar: string | null
 }
 
 export interface IMessage {
     _id: string
     authorId: string
-    messageText: string
+    message: string
+    updatedAt: Date
 }
-
-export interface IMessageRequestData extends Omit<IMessage, '_id'> {}
 
 export interface IChatDataForm {
     firstName: string

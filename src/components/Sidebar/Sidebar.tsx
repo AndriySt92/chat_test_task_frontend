@@ -2,14 +2,14 @@ import { useState } from "react"
 import styles from "./Sidebar.module.css"
 import { ChatBots, Error, Loader, SidebarTop } from "../../components"
 import { useGetChatsQuery } from "../../redux/chatApi"
+import { IChat } from "../../interfaces/chatInterfaces"
 
 interface Props {
-  selectedChatId: string
-  handleClickChat: (chatId: string) => void
+  selectedChat: IChat
+  handleClickChat: (chat: IChat) => void
 }
 
-const Sidebar = ({ selectedChatId, handleClickChat }: Props) => {
-  const [chatBots, setChatBots] = useState()
+const Sidebar = ({ selectedChat, handleClickChat }: Props) => {
   const [searchTerm, setSearchTerm] = useState<string>("")
   const { data, isLoading, isError } = useGetChatsQuery({ search: searchTerm })
 
@@ -20,7 +20,7 @@ const Sidebar = ({ selectedChatId, handleClickChat }: Props) => {
   return (
     <div className={styles.sidebar}>
       <SidebarTop handleSearch={handleSearch} />
-      {data && <ChatBots data={data} handleClick={handleClickChat} selectedChatId={selectedChatId} />}
+      {data && <ChatBots chats={data} handleClick={handleClickChat} selectedChat={selectedChat} />}
       {isLoading && <Loader />}
       {isError && <Error text="Error fetching Chat Bots" />}
     </div>
