@@ -1,27 +1,32 @@
-# vite-template-redux
+# Reenbit test task
 
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
+## Backend Link
 
-```sh
-npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
-```
+https://github.com/AndriySt92/chat_test_task_backend
 
-## Goals
+##Screenshots
 
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
-- Optimized performance compared to Create React App
-- Customizable without ejecting
+![Main page](.src/assets/1.png)
+![Login Page](.src/assets/4.png)
+![Update message](.src/assets/3.png)
+![Create bot](.src/assets/2.png)
 
-## Scripts
+## Frontend
 
-- `dev`/`start` - start dev server and open browser
-- `build` - build for production
-- `preview` - locally preview production build
-- `test` - launch test runner
+- React
+- Redux-toolkit/RTK query
+- Typescript
+- React-hook-form
+- React-toastify
+- React-router-dom
+- Socket.io
+- Classnames
+- Date-fns
 
-## Inspiration
+## Backend
 
-- [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
-- [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
-- [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
+- Express
+- MongoBD
+- Express-validator
+- Mongoose
+- Socket.io

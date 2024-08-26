@@ -27,6 +27,8 @@ const MessageForm = ({ message, mode, chatId, handleUpdate }: Props) => {
   })
 
   const onSubmit = handleSubmit(async ({ messageText }) => {
+    if(!messageText) return 
+    
     try {
       if (mode === "create") {
         await addMessage({ chatId, messageText }).unwrap()
