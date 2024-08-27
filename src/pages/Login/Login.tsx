@@ -11,6 +11,7 @@ import {
 } from "../../components"
 import { Link } from "react-router-dom"
 import { useLoginMutation } from "../../redux/authApi"
+import { toast } from "react-toastify"
 
 const Login = () => {
   const {
@@ -29,8 +30,15 @@ const Login = () => {
   const onSubmit = handleSubmit(async data => {
     try {
       await login(data).unwrap()
-    } catch (error) {
-      console.log(error)
+    } catch (error: unknown) {
+      debugger
+      if (error) {
+        const message =
+          (error as IApiError)?.data?.message || "Something went wrong"
+        toast.error(message)
+      } else {
+        toast.error("An unexpected error occurred")
+      }
     }
   })
 

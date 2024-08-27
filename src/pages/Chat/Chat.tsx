@@ -11,8 +11,10 @@ import { useAppSelector } from "../../hooks/hooks"
 const Chat = () => {
   const [selectedChat, setSelectedChat] = useState<IChat>({} as IChat)
   const [messages, setMessages] = useState<IMessage[]>([])
-  const { data } = useGetChatMessagesQuery(selectedChat._id)
   const user = useAppSelector(state => state.user.user)
+  //Here is problem when selectedChat is {} - /api/chats/undefined/messages
+  const { data } = useGetChatMessagesQuery(selectedChat._id)
+ 
 
   useEffect(() => {
     if (data) {

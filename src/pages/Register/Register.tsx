@@ -11,6 +11,7 @@ import {
 } from "../../components"
 import { Link } from "react-router-dom"
 import { useRegisterMutation } from "../../redux/authApi"
+import { toast } from "react-toastify"
 
 const Register = () => {
   const {
@@ -33,8 +34,14 @@ const Register = () => {
   const onSubmit = handleSubmit(async data => {
     try {
       await registerMutation(data).unwrap()
-    } catch (error) {
-      console.log(error)
+    } catch (error: unknown) {
+      if (error) {
+        const message =
+          (error as IApiError)?.data?.message || "Something went wrong"
+        toast.error(message)
+      } else {
+        toast.error("An unexpected error occurred")
+      }
     }
   })
 
